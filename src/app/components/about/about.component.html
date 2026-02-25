@@ -1,0 +1,211 @@
+<div class="max-w-5xl mx-auto px-4 py-10">
+
+  <!-- Header -->
+  <div class="mb-10 text-center">
+    <p class="text-sm font-semibold uppercase tracking-widest text-indigo-500 mb-2">SOLID Principles</p>
+    <h1 class="text-4xl font-black text-gray-900 mb-3">Liskov Substitution Principle</h1>
+    <p class="text-lg text-gray-500">The <strong>L</strong> in SOLID</p>
+  </div>
+
+  <!-- Formal Definition -->
+  <div class="bg-indigo-50 border-l-4 border-indigo-500 rounded-xl p-8 mb-8 text-center">
+    <p class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-3">Formal Definition — Barbara Liskov, 1987</p>
+    <blockquote class="text-xl font-semibold text-indigo-900 leading-relaxed italic">
+      "Objects of a subclass should be replaceable with objects of the superclass
+      without breaking the application."
+    </blockquote>
+    <p class="mt-4 text-sm text-indigo-600">
+      If <code class="bg-indigo-100 px-1 rounded">S</code> is a subtype of
+      <code class="bg-indigo-100 px-1 rounded">T</code>, then objects of type
+      <code class="bg-indigo-100 px-1 rounded">T</code> may be replaced with objects of type
+      <code class="bg-indigo-100 px-1 rounded">S</code> without altering the correctness of the program.
+    </p>
+  </div>
+
+  <!-- Duck Analogy -->
+  <div class="bg-amber-50 border-2 border-amber-200 rounded-xl p-6 mb-8 flex gap-4 items-start">
+    <span class="text-4xl select-none">🦆</span>
+    <div>
+      <p class="font-bold text-amber-900 text-base mb-1">The Duck Analogy</p>
+      <p class="text-amber-800 text-sm leading-relaxed italic">
+        "If it looks like a duck and quacks like a duck but needs batteries —
+        you have the wrong abstraction."
+      </p>
+      <p class="text-amber-700 text-sm mt-2">
+        An <code class="bg-amber-100 px-1 rounded">ElectricScooter</code> that extends
+        <code class="bg-amber-100 px-1 rounded">VehicleBase</code> and throws on
+        <code class="bg-amber-100 px-1 rounded">startEngine()</code> is a scooter pretending to be
+        an engine vehicle. It <em>looks</em> substitutable, but it isn't.
+      </p>
+    </div>
+  </div>
+
+  <!-- Hierarchy Diagrams -->
+  <h2 class="text-xl font-bold text-gray-900 mb-4">Hierarchy Comparison</h2>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+
+    <!-- Wrong Hierarchy -->
+    <div class="bg-white border-2 border-red-200 rounded-xl overflow-hidden shadow-sm">
+      <div class="bg-red-50 px-5 py-3 border-b border-red-200">
+        <p class="font-bold text-red-800">❌ Wrong Hierarchy</p>
+        <p class="text-xs text-red-500 mt-0.5">All subclasses forced to implement startEngine()</p>
+      </div>
+      <div class="p-6 font-mono text-sm">
+        <!-- Root -->
+        <div class="flex justify-center mb-3">
+          <div class="bg-slate-800 text-white px-4 py-2 rounded-lg text-xs font-bold shadow">
+            VehicleBase
+            <span class="block text-slate-400 font-normal text-xs mt-0.5">startEngine(): string</span>
+          </div>
+        </div>
+        <!-- Connector lines -->
+        <div class="flex justify-center mb-1">
+          <div class="flex gap-12 items-start">
+            <div class="w-px h-6 bg-gray-300 mx-auto"></div>
+            <div class="w-px h-6 bg-gray-300 mx-auto"></div>
+            <div class="w-px h-6 bg-gray-300 mx-auto"></div>
+          </div>
+        </div>
+        <div class="flex justify-center mb-3">
+          <div class="w-64 h-px bg-gray-300 relative -top-1"></div>
+        </div>
+        <!-- Children -->
+        <div class="flex justify-between gap-2">
+          <div class="bg-green-50 border border-green-300 px-3 py-2 rounded-lg text-xs text-center flex-1">
+            <div class="font-bold text-green-800">Truck</div>
+            <div class="text-green-600 text-xs mt-0.5">startEngine() ✅</div>
+          </div>
+          <div class="bg-green-50 border border-green-300 px-3 py-2 rounded-lg text-xs text-center flex-1">
+            <div class="font-bold text-green-800">Motorcycle</div>
+            <div class="text-green-600 text-xs mt-0.5">startEngine() ✅</div>
+          </div>
+          <div class="bg-red-50 border-2 border-red-400 px-3 py-2 rounded-lg text-xs text-center flex-1">
+            <div class="font-bold text-red-800">ElectricScooter</div>
+            <div class="text-red-600 text-xs mt-0.5">startEngine() 💥</div>
+          </div>
+        </div>
+        <p class="text-xs text-red-600 mt-4 text-center bg-red-50 rounded p-2">
+          ElectricScooter cannot honour the contract — LSP violated
+        </p>
+      </div>
+    </div>
+
+    <!-- Correct Hierarchy -->
+    <div class="bg-white border-2 border-green-200 rounded-xl overflow-hidden shadow-sm">
+      <div class="bg-green-50 px-5 py-3 border-b border-green-200">
+        <p class="font-bold text-green-800">✅ Correct Hierarchy</p>
+        <p class="text-xs text-green-500 mt-0.5">Each type only declares what it can do</p>
+      </div>
+      <div class="p-6 font-mono text-sm">
+        <!-- Root -->
+        <div class="flex justify-center mb-3">
+          <div class="bg-indigo-700 text-white px-4 py-2 rounded-lg text-xs font-bold shadow">
+            Vehicle
+            <span class="block text-indigo-300 font-normal text-xs mt-0.5">id, name, icon</span>
+          </div>
+        </div>
+        <!-- Level 2 connectors + nodes -->
+        <div class="flex justify-center mb-1">
+          <div class="flex gap-16">
+            <div class="w-px h-5 bg-gray-300 mx-auto"></div>
+            <div class="w-px h-5 bg-gray-300 mx-auto"></div>
+          </div>
+        </div>
+        <div class="flex justify-center mb-1">
+          <div class="w-44 h-px bg-gray-300"></div>
+        </div>
+        <div class="flex justify-between gap-3 mb-3">
+          <div class="bg-blue-50 border border-blue-300 px-3 py-2 rounded-lg text-xs text-center flex-1">
+            <div class="font-bold text-blue-800">EngineVehicle</div>
+            <div class="text-blue-600 text-xs mt-0.5">startEngine()</div>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-300 px-3 py-2 rounded-lg text-xs text-center flex-1">
+            <div class="font-bold text-emerald-800">ElectricVehicle</div>
+            <div class="text-emerald-600 text-xs mt-0.5">chargeBattery()</div>
+          </div>
+        </div>
+        <!-- Level 3 -->
+        <div class="flex justify-between gap-3">
+          <div class="flex gap-1 flex-1">
+            <div class="bg-blue-50 border border-blue-200 px-2 py-1.5 rounded text-xs text-center flex-1">
+              <div class="font-bold text-blue-700">Truck</div>
+              <div class="text-blue-500 text-xs">✅</div>
+            </div>
+            <div class="bg-blue-50 border border-blue-200 px-2 py-1.5 rounded text-xs text-center flex-1">
+              <div class="font-bold text-blue-700">Moto</div>
+              <div class="text-blue-500 text-xs">✅</div>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="bg-emerald-50 border border-emerald-200 px-2 py-1.5 rounded text-xs text-center">
+              <div class="font-bold text-emerald-700">ElectricScooter</div>
+              <div class="text-emerald-500 text-xs">✅</div>
+            </div>
+          </div>
+        </div>
+        <p class="text-xs text-green-700 mt-4 text-center bg-green-50 rounded p-2">
+          Every subtype is safely substitutable — LSP satisfied
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- When to Apply / When Not To -->
+  <h2 class="text-xl font-bold text-gray-900 mb-4">When to Apply LSP</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+
+    <div class="bg-white border-2 border-green-200 rounded-xl overflow-hidden shadow-sm">
+      <div class="bg-green-600 px-5 py-3">
+        <p class="font-bold text-white">✅ Apply LSP when…</p>
+      </div>
+      <ul class="p-5 space-y-3 text-sm text-gray-700">
+        <li class="flex gap-2">
+          <span class="text-green-500 font-bold shrink-0">•</span>
+          <span>Subtypes are <strong>genuinely interchangeable</strong> in the same context
+          (e.g. all vehicles that start an engine)</span>
+        </li>
+        <li class="flex gap-2">
+          <span class="text-green-500 font-bold shrink-0">•</span>
+          <span>You iterate a collection of mixed subtypes and call a shared method</span>
+        </li>
+        <li class="flex gap-2">
+          <span class="text-green-500 font-bold shrink-0">•</span>
+          <span>A method accepts a base type and must work with any subtype</span>
+        </li>
+        <li class="flex gap-2">
+          <span class="text-green-500 font-bold shrink-0">•</span>
+          <span>You want to extend behaviour <strong>without modifying existing code</strong> (Open/Closed)</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="bg-white border-2 border-red-200 rounded-xl overflow-hidden shadow-sm">
+      <div class="bg-red-600 px-5 py-3">
+        <p class="font-bold text-white">❌ Don't force LSP when…</p>
+      </div>
+      <ul class="p-5 space-y-3 text-sm text-gray-700">
+        <li class="flex gap-2">
+          <span class="text-red-500 font-bold shrink-0">•</span>
+          <span>Subtypes have <strong>fundamentally different contracts</strong>
+          (electric vs combustion vehicles)</span>
+        </li>
+        <li class="flex gap-2">
+          <span class="text-red-500 font-bold shrink-0">•</span>
+          <span>You would need to throw exceptions or return dummy values to satisfy the parent's interface</span>
+        </li>
+        <li class="flex gap-2">
+          <span class="text-red-500 font-bold shrink-0">•</span>
+          <span>Creating a shared base requires <strong>duplicating fields</strong> across every subtype
+          (→ use Interface Segregation instead)</span>
+        </li>
+        <li class="flex gap-2">
+          <span class="text-red-500 font-bold shrink-0">•</span>
+          <span>There is only <strong>one concrete implementation</strong> — abstraction adds no value</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>

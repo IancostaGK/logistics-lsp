@@ -1,0 +1,124 @@
+<div class="max-w-7xl mx-auto px-4 py-8">
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 items-start">
+
+    <!-- Left column: main content -->
+    <div>
+
+      <!-- Header -->
+      <div class="mb-8">
+        <div class="flex items-center gap-3 mb-2">
+          <h1 class="text-3xl font-bold text-gray-900">Scenario 2</h1>
+          <span class="bg-green-100 text-green-700 text-sm font-semibold px-3 py-1 rounded-full border border-green-200">
+            ✅ LSP Compliant
+          </span>
+        </div>
+        <p class="text-lg text-gray-500 mb-4">Good: Segregated Interfaces with Type Guards</p>
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 text-sm text-green-800 leading-relaxed">
+          <strong>Solution:</strong> We no longer force
+          <code class="bg-green-100 px-1 rounded">ElectricScooter</code> to implement an incompatible method.
+          <code class="bg-green-100 px-1 rounded">EngineVehicle</code> and
+          <code class="bg-green-100 px-1 rounded">ElectricVehicle</code> extend a shared
+          <code class="bg-green-100 px-1 rounded">Vehicle</code> base — type guards dispatch the
+          right action for each type. <strong>No crashes possible.</strong>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex gap-3 mb-6">
+        <button
+          (click)="dispatchAll()"
+          class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-5 rounded-lg transition-colors text-sm">
+          ✅ Dispatch All (no crash)
+        </button>
+        <button
+          (click)="reset()"
+          class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold py-2 px-5 rounded-lg transition-colors text-sm">
+          ↺ Reset
+        </button>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        @for (card of cards; track card.vehicle.id) {
+          <div
+            class="bg-white rounded-xl shadow-md border-2 overflow-hidden transition-colors"
+            [class.border-green-300]="card.result"
+            [class.border-gray-100]="!card.result"
+          >
+            <!-- Card Header -->
+            <div class="p-6 border-b border-gray-50">
+              <div class="text-5xl mb-3 select-none">{{ card.vehicle.icon }}</div>
+              <h3 class="text-lg font-bold text-gray-900">{{ card.vehicle.name }}</h3>
+              <!-- Type Badge -->
+              <span
+                class="text-xs font-semibold px-2 py-1 rounded-full mt-2 inline-block"
+                [class.bg-blue-100]="isEngineVehicle(card.vehicle)"
+                [class.text-blue-700]="isEngineVehicle(card.vehicle)"
+                [class.bg-emerald-100]="isElectricVehicle(card.vehicle)"
+                [class.text-emerald-700]="isElectricVehicle(card.vehicle)"
+              >
+                {{ getVehicleTypeBadge(card.vehicle) }}
+              </span>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-6">
+              <!-- Result Area -->
+              <div
+                class="min-h-14 mb-4 text-sm rounded-lg p-3 transition-colors"
+                [class.bg-gray-50]="!card.result"
+                [class.bg-green-50]="!!card.result"
+              >
+                @if (card.result) {
+                  <p class="text-green-700 font-medium">✅ {{ card.result }}</p>
+                } @else {
+                  <p class="text-gray-400 italic text-xs">Press Dispatch to trigger the correct action</p>
+                }
+              </div>
+
+              <!-- Dispatch Button -->
+              <button
+                (click)="dispatch(card)"
+                class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
+                {{ getActionLabel(card.vehicle) }}
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Code Snippet -->
+      <div class="bg-gray-900 rounded-xl p-6 overflow-x-auto">
+        <p class="text-amber-400 font-semibold text-base mb-4 font-sans">📄 The Solution</p>
+        <pre class="text-sm font-mono leading-relaxed text-gray-300"><span class="text-gray-500">// Shared base — only common fields</span>
+<span class="text-blue-400">interface</span> <span class="text-green-400">Vehicle</span> &#123; id: <span class="text-cyan-400">number</span>; name: <span class="text-cyan-400">string</span>; icon: <span class="text-cyan-400">string</span>; &#125;
+
+<span class="text-gray-500">// ✅ Only for vehicles that have engines</span>
+<span class="text-blue-400">interface</span> <span class="text-green-400">EngineVehicle</span> <span class="text-blue-400">extends</span> Vehicle &#123;
+  <span class="text-yellow-300">startEngine</span>(): <span class="text-cyan-400">string</span>;
+&#125;
+
+<span class="text-gray-500">// ✅ Only for electric vehicles</span>
+<span class="text-blue-400">interface</span> <span class="text-green-400">ElectricVehicle</span> <span class="text-blue-400">extends</span> Vehicle &#123;
+  <span class="text-yellow-300">chargeBattery</span>(): <span class="text-cyan-400">string</span>;
+&#125;
+
+<span class="text-gray-500">// Type guards — safe dispatch, no try/catch needed</span>
+<span class="text-blue-400">if</span> (<span class="text-yellow-300">isEngineVehicle</span>(v))   v.<span class="text-yellow-300">startEngine</span>();   <span class="text-green-500">// ✅ safe</span>
+<span class="text-blue-400">if</span> (<span class="text-yellow-300">isElectricVehicle</span>(v)) v.<span class="text-yellow-300">chargeBattery</span>(); <span class="text-green-500">// ✅ safe</span></pre>
+      </div>
+
+    </div>
+
+    <!-- Right column: discussion sidebar -->
+    <app-discussion-sidebar
+      routeKey="good"
+      [questions]="[
+        'How do type guards enable safe substitution?',
+        'Why is splitting the hierarchy better than forcing a single interface?',
+        'What are the trade-offs of this approach?'
+      ]"
+    ></app-discussion-sidebar>
+
+  </div>
+</div>
