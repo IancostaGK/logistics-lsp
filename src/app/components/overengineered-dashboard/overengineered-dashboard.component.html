@@ -7,42 +7,38 @@
       <!-- Header -->
       <div class="mb-8">
         <div class="flex items-start gap-4 mb-5">
-          <div class="font-black text-[5rem] leading-none select-none shrink-0" style="color: #1E1800; font-family: 'Syne', sans-serif;">03</div>
+          <div class="scenario-num scenario-num-amber">03</div>
           <div class="pt-2">
             <div class="flex items-center gap-3 mb-2 flex-wrap">
-              <h1 class="text-3xl font-black" style="color: #F1F5F9;">Scenario 3</h1>
-              <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); color: #FCD34D; font-family: 'JetBrains Mono', monospace;">
-                ⚠ OVERENGINEERED
-              </span>
+              <h1 class="text-3xl font-black t-hi">Scenario 3</h1>
+              <span class="badge badge-amber">⚠ OVERENGINEERED</span>
             </div>
-            <p class="text-base font-medium" style="color: #64748B;">Bad: One Separate Interface per Vehicle (Duplication)</p>
+            <p class="text-base font-medium t-dim">Bad: One Separate Interface per Vehicle (Duplication)</p>
           </div>
         </div>
 
-        <div class="rounded-xl p-5 text-sm leading-relaxed"
-             style="background: rgba(245,158,11,0.05); border: 1px solid rgba(245,158,11,0.2); color: rgba(252,211,77,0.75);">
-          <strong style="color: #FCD34D;">Problem:</strong> Each vehicle type gets its own interface —
-          <code class="px-1.5 py-0.5 rounded text-xs ml-1" style="background: rgba(245,158,11,0.15); color: #FCD34D;">ITruck</code>,
-          <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(245,158,11,0.15); color: #FCD34D;">IMotorcycle</code>,
-          <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(245,158,11,0.15); color: #FCD34D;">IElectricScooter</code>
-          — each with the <strong style="color: #FCD34D;">same 5 fields duplicated</strong>. This is a different kind of poor design:
+        <div class="desc-box desc-box-amber">
+          <strong class="t-amber">Problem:</strong> Each vehicle type gets its own interface —
+          <code class="chip chip-amber ml-1">ITruck</code>,
+          <code class="chip chip-amber">IMotorcycle</code>,
+          <code class="chip chip-amber">IElectricScooter</code>
+          — each with the <strong class="t-amber">same 5 fields duplicated</strong>. This is a different kind of poor design:
           it violates DRY and explodes maintenance cost. Use the simulator below to feel the pain.
         </div>
       </div>
 
       <!-- Maintenance Cost Counter -->
-      <div class="rounded-2xl p-6 mb-8 flex items-center justify-between gap-4"
+      <div class="rounded-2xl p-5 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
            style="background: linear-gradient(135deg, rgba(239,68,68,0.15), rgba(220,38,38,0.1)); border: 1px solid rgba(239,68,68,0.3);">
         <div class="flex-1">
-          <p class="text-xs font-mono uppercase tracking-widest mb-2" style="color: rgba(252,165,165,0.6);">Maintenance Cost</p>
-          <p class="text-xl font-bold leading-tight" style="color: #FCA5A5;">
+          <p class="text-xs mono uppercase tracking-widest mb-2" style="color: rgba(252,165,165,0.6);">Maintenance Cost</p>
+          <p class="text-xl font-bold leading-tight t-red-hi">
             To add <span class="underline decoration-red-400">1 field</span>, you must edit
           </p>
           <p class="text-sm mt-1" style="color: rgba(252,165,165,0.5);">Try the simulator below to experience it ↓</p>
         </div>
-        <div class="text-right shrink-0">
-          <span class="font-black leading-none block" style="font-size: 5rem; color: #F87171; line-height: 1; font-family: 'Syne', sans-serif;">{{ interfaceCount }}</span>
+        <div class="sm:text-right shrink-0">
+          <span class="scenario-num t-red block">{{ interfaceCount }}</span>
           <p class="font-semibold text-lg" style="color: rgba(248,113,113,0.6);">interfaces</p>
         </div>
       </div>
@@ -51,12 +47,11 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
 
         <!-- Overengineered -->
-        <div class="rounded-2xl overflow-hidden"
-             style="background: var(--bg-surface); border: 1px solid rgba(239,68,68,0.25);">
-          <div class="px-5 py-4" style="background: rgba(239,68,68,0.08); border-bottom: 1px solid rgba(239,68,68,0.2);">
-            <h3 class="font-bold text-sm" style="color: #F87171;">❌ Overengineered (current)</h3>
+        <div class="panel panel-red">
+          <div class="panel-hd panel-hd-red">
+            <h3 class="font-bold text-sm t-red">❌ Overengineered (current)</h3>
             <p class="text-xs mt-1" style="color: rgba(248,113,113,0.6);">
-              {{ interfaceCount }} interfaces × 6 fields = <strong style="color: #F87171;">18 declarations</strong>
+              {{ interfaceCount }} interfaces × 6 fields = <strong class="t-red">18 declarations</strong>
             </p>
           </div>
           <div class="p-4 space-y-2.5">
@@ -67,10 +62,10 @@
                 [style.border]="highlightAll ? '1px solid rgba(239,68,68,0.4)' : '1px solid var(--border)'"
                 [style.box-shadow]="highlightAll ? '0 0 0 2px rgba(239,68,68,0.1)' : 'none'"
               >
-                <div class="text-xs" style="font-family: 'JetBrains Mono', monospace;">
-                  <span style="color: #C084FC;">interface </span>
-                  <span style="color: #60A5FA; font-weight: bold;">{{ iface.name }}</span>
-                  <span style="color: #94A3B8;"> &#123;</span>
+                <div class="text-xs mono">
+                  <span class="t-purple">interface </span>
+                  <span class="t-blue font-bold">{{ iface.name }}</span>
+                  <span class="t-muted"> &#123;</span>
                   <div class="pl-4 mt-1 space-y-0.5">
                     @for (field of iface.fields; track field) {
                       <div
@@ -81,7 +76,7 @@
                       </div>
                     }
                   </div>
-                  <span style="color: #94A3B8;">&#125;</span>
+                  <span class="t-muted">&#125;</span>
                 </div>
               </div>
             }
@@ -89,37 +84,36 @@
         </div>
 
         <!-- Good Approach -->
-        <div class="rounded-2xl overflow-hidden"
-             style="background: var(--bg-surface); border: 1px solid rgba(16,185,129,0.25);">
-          <div class="px-5 py-4" style="background: rgba(16,185,129,0.08); border-bottom: 1px solid rgba(16,185,129,0.2);">
-            <h3 class="font-bold text-sm" style="color: #34D399;">✅ Good Approach</h3>
+        <div class="panel panel-green">
+          <div class="panel-hd panel-hd-green">
+            <h3 class="font-bold text-sm t-green">✅ Good Approach</h3>
             <p class="text-xs mt-1" style="color: rgba(52,211,153,0.6);">
-              1 shared base + 3 specific interfaces = <strong style="color: #34D399;">7 declarations</strong>
+              1 shared base + 3 specific interfaces = <strong class="t-green">7 declarations</strong>
             </p>
           </div>
           <div class="p-4 space-y-2.5">
             <!-- Shared Base -->
             <div class="rounded-xl p-3" style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2);">
-              <div class="text-xs" style="font-family: 'JetBrains Mono', monospace;">
-                <span style="color: #C084FC;">interface </span>
-                <span style="color: #34D399; font-weight: bold;">Vehicle</span>
-                <span style="color: #94A3B8;"> &#123;</span>
+              <div class="text-xs mono">
+                <span class="t-purple">interface </span>
+                <span class="t-green font-bold">Vehicle</span>
+                <span class="t-muted"> &#123;</span>
                 <div class="pl-4 mt-1 space-y-0.5">
-                  <div><span style="color: #64748B;">  id: number;</span></div>
-                  <div><span style="color: #64748B;">  name: string;</span></div>
+                  <div><span class="t-dim">  id: number;</span></div>
+                  <div><span class="t-dim">  name: string;</span></div>
                   <div
                     class="rounded px-1 transition-all duration-200"
                     [style.background]="highlightAll ? 'rgba(252,211,77,0.15)' : 'transparent'"
                   >
                     @if (highlightAll) {
-                      <span style="color: #FCD34D; font-weight: bold;">  weight: number;</span>
-                      <span style="color: #34D399; font-weight: bold;"> ← edit once ✅</span>
+                      <span class="t-amber font-bold">  weight: number;</span>
+                      <span class="t-green font-bold"> ← edit once ✅</span>
                     } @else {
-                      <span style="color: #64748B;">  icon: string;</span>
+                      <span class="t-dim">  icon: string;</span>
                     }
                   </div>
                 </div>
-                <span style="color: #94A3B8;">&#125;</span>
+                <span class="t-muted">&#125;</span>
               </div>
             </div>
 
@@ -129,11 +123,11 @@
               @for (iface of goodInterfaces; track iface.name) {
                 <div class="rounded-xl p-3 relative" style="background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.2);">
                   <div class="absolute -left-4 top-1/2 -translate-y-1/2 h-px w-4" style="background: var(--border-hi);"></div>
-                  <div class="text-xs" style="font-family: 'JetBrains Mono', monospace;">
-                    <span style="color: #C084FC;">interface </span>
-                    <span style="color: #60A5FA; font-weight: bold;">{{ iface.name }}</span>
-                    <span style="color: #64748B;"> extends Vehicle</span>
-                    <span style="color: #94A3B8;"> &#123; {{ iface.extra }}; &#125;</span>
+                  <div class="text-xs mono">
+                    <span class="t-purple">interface </span>
+                    <span class="t-blue font-bold">{{ iface.name }}</span>
+                    <span class="t-dim"> extends Vehicle</span>
+                    <span class="t-muted"> &#123; {{ iface.extra }}; &#125;</span>
                   </div>
                 </div>
               }
@@ -144,37 +138,29 @@
       </div>
 
       <!-- Field Simulator -->
-      <div class="rounded-2xl p-6 mb-10" style="background: #060B14; border: 1px solid var(--border);">
+      <div class="code-block p-6 mb-10">
         <div class="flex items-center gap-2 mb-1">
           <span class="text-base">🔬</span>
-          <h3 class="font-bold" style="color: #E2E8F0;">Field Addition Simulator</h3>
+          <h3 class="font-bold t-base">Field Addition Simulator</h3>
         </div>
-        <p class="text-sm mb-5" style="color: #64748B;">
+        <p class="text-sm mb-5 t-dim">
           Click below to simulate adding
-          <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(245,158,11,0.15); color: #FCD34D; font-family: 'JetBrains Mono', monospace;">weight: number</code>
+          <code class="chip chip-amber">weight: number</code>
           to all vehicle types and see the cost difference:
         </p>
         @if (!highlightAll) {
           <button
             (click)="simulateAddField()"
-            class="font-semibold py-2.5 px-6 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
-            style="background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); color: #FCD34D;">
+            class="btn btn-amber">
             ➕ Add field: weight: number
           </button>
         } @else {
           <div class="flex items-center gap-3 flex-wrap">
-            <span class="font-semibold py-2 px-4 rounded-xl text-sm"
-                  style="background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.25); color: #FCA5A5;">
-              ❌ Overengineered: edited {{ interfaceCount }} interfaces
-            </span>
-            <span class="font-semibold py-2 px-4 rounded-xl text-sm"
-                  style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); color: #6EE7B7;">
-              ✅ Good approach: edited 1 interface
-            </span>
+            <span class="badge badge-red">❌ Overengineered: edited {{ interfaceCount }} interfaces</span>
+            <span class="badge badge-green">✅ Good approach: edited 1 interface</span>
             <button
               (click)="resetSimulation()"
-              class="text-sm transition-all duration-200 hover:opacity-80 underline"
-              style="color: #64748B;">
+              class="text-sm transition-all duration-200 hover:opacity-80 underline t-dim">
               ↺ Reset simulation
             </button>
           </div>
@@ -183,13 +169,8 @@
 
       <!-- Fleet Header -->
       <div class="flex items-center justify-between mb-5">
-        <h2 class="text-xl font-bold" style="color: #F1F5F9;">Fleet</h2>
-        <button
-          (click)="dispatchAll()"
-          class="font-semibold py-2.5 px-5 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
-          style="background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); color: #FCD34D;">
-          🚀 Dispatch All
-        </button>
+        <h2 class="section-h2 !mb-0">Fleet</h2>
+        <button (click)="dispatchAll()" class="btn btn-amber">🚀 Dispatch All</button>
       </div>
 
       <!-- Vehicle Cards -->
@@ -201,19 +182,13 @@
             [style.border]="card.result ? '1px solid rgba(245,158,11,0.45)' : '1px solid var(--border)'"
           >
             <!-- Card Header -->
-            <div class="p-5 pb-4" style="border-bottom: 1px solid var(--border);">
+            <div class="p-5 pb-4 card-sep">
               <div class="text-4xl mb-3 select-none">{{ card.icon }}</div>
-              <h3 class="font-bold text-base mb-2" style="color: #E2E8F0;">{{ card.vehicle.name }}</h3>
+              <h3 class="font-bold text-base mb-2 t-base">{{ card.vehicle.name }}</h3>
               <div class="flex gap-2 flex-wrap">
-                <span class="text-xs px-2 py-1 rounded-lg" style="background: var(--bg-raised); border: 1px solid var(--border); color: #64748B; font-family: 'JetBrains Mono', monospace;">
-                  {{ card.vehicle.color }}
-                </span>
-                <span class="text-xs px-2 py-1 rounded-lg" style="background: var(--bg-raised); border: 1px solid var(--border); color: #64748B; font-family: 'JetBrains Mono', monospace;">
-                  {{ card.vehicle.maxSpeed }} km/h
-                </span>
-                <span class="text-xs px-2 py-1 rounded-lg" style="background: var(--bg-raised); border: 1px solid var(--border); color: #64748B; font-family: 'JetBrains Mono', monospace;">
-                  {{ card.vehicle.payload }} kg
-                </span>
+                <span class="prop-tag">{{ card.vehicle.color }}</span>
+                <span class="prop-tag">{{ card.vehicle.maxSpeed }} km/h</span>
+                <span class="prop-tag">{{ card.vehicle.payload }} kg</span>
               </div>
             </div>
 
@@ -225,15 +200,12 @@
                 [style.border]="card.result ? '1px solid rgba(245,158,11,0.2)' : '1px solid var(--border)'"
               >
                 @if (card.result) {
-                  <p class="font-medium" style="color: #FCD34D;">🚀 {{ card.result }}</p>
+                  <p class="font-medium t-amber">🚀 {{ card.result }}</p>
                 } @else {
-                  <p class="italic text-xs" style="color: #3D4F6E;">Press Dispatch</p>
+                  <p class="italic text-xs t-ghost">Press Dispatch</p>
                 }
               </div>
-              <button
-                (click)="dispatch(card)"
-                class="w-full font-semibold py-2.5 px-4 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
-                style="background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.25); color: #FCD34D;">
+              <button (click)="dispatch(card)" class="btn-dispatch btn-dispatch-amber">
                 🚀 Dispatch
               </button>
             </div>

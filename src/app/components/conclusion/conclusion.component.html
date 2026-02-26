@@ -2,145 +2,97 @@
 
   <!-- Header -->
   <div class="text-center mb-12">
-    <div class="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase mb-5 px-4 py-2 rounded-full"
-         style="background: rgba(20,184,166,0.08); border: 1px solid rgba(20,184,166,0.2); color: #5EEAD4;">
-      Summary
-    </div>
-    <h1 class="text-5xl font-black mb-3" style="color: #F1F5F9;">Conclusion</h1>
-    <p class="text-lg" style="color: #64748B;">Three approaches — one principle</p>
+    <div class="badge-lg badge-lg-teal mb-5">Summary</div>
+    <h1 class="text-5xl font-black mb-3 t-hi">Conclusion</h1>
+    <p class="text-lg t-dim">Three approaches — one principle</p>
   </div>
 
   <!-- Comparison Table -->
-  <h2 class="text-xl font-bold mb-5" style="color: #F1F5F9;">Scenario Comparison</h2>
+  <h2 class="section-h2">Scenario Comparison</h2>
   <div class="rounded-2xl overflow-hidden mb-12" style="border: 1px solid var(--border);">
     <div class="overflow-x-auto">
-      <table class="w-full text-sm">
+      <table class="w-full text-sm min-w-[560px]">
         <thead>
           <tr style="background: var(--bg-raised); border-bottom: 1px solid var(--border);">
-            <th class="text-left px-5 py-4 font-semibold w-44" style="color: #64748B;">Criteria</th>
+            <th class="text-left px-5 py-4 font-semibold w-44 t-dim">Criteria</th>
             <th class="px-5 py-4 font-semibold text-center">
-              <div style="color: #F87171;">✕ Bad</div>
-              <div class="text-xs font-normal mt-0.5" style="color: #475569; font-family: 'JetBrains Mono', monospace;">Abstract class + throws</div>
+              <div class="t-red">✕ Bad</div>
+              <div class="text-xs font-normal mt-0.5 mono" style="color: #475569;">Abstract class + throws</div>
             </th>
             <th class="px-5 py-4 font-semibold text-center">
-              <div style="color: #34D399;">✓ Good</div>
-              <div class="text-xs font-normal mt-0.5" style="color: #475569; font-family: 'JetBrains Mono', monospace;">Segregated interfaces</div>
+              <div class="t-green">✓ Good</div>
+              <div class="text-xs font-normal mt-0.5 mono" style="color: #475569;">Segregated interfaces</div>
             </th>
             <th class="px-5 py-4 font-semibold text-center">
-              <div style="color: #FCD34D;">⚠ Overengineered</div>
-              <div class="text-xs font-normal mt-0.5" style="color: #475569; font-family: 'JetBrains Mono', monospace;">One interface per type</div>
+              <div class="t-amber">⚠ Overengineered</div>
+              <div class="text-xs font-normal mt-0.5 mono" style="color: #475569;">One interface per type</div>
             </th>
           </tr>
         </thead>
         <tbody>
 
           <tr style="border-bottom: 1px solid var(--border); background: var(--bg-surface);">
-            <td class="px-5 py-4 font-semibold" style="color: #CBD5E1;">Crashes at runtime?</td>
+            <td class="px-5 py-4 font-semibold t-base">Crashes at runtime?</td>
             <td class="px-5 py-4 text-center">
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.25); color: #FCA5A5;">
-                💥 Yes
-              </span>
+              <span class="badge badge-red">💥 Yes</span>
             </td>
             <td class="px-5 py-4 text-center">
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #6EE7B7;">
-                ✓ No
-              </span>
+              <span class="badge badge-green">✓ No</span>
             </td>
             <td class="px-5 py-4 text-center">
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #6EE7B7;">
-                ✓ No
-              </span>
+              <span class="badge badge-green">✓ No</span>
             </td>
           </tr>
 
           <tr style="border-bottom: 1px solid var(--border); background: var(--bg-surface);">
-            <td class="px-5 py-4 font-semibold" style="color: #CBD5E1;">Scalable?</td>
+            <td class="px-5 py-4 font-semibold t-base">Scalable?</td>
             <td class="px-5 py-4 text-center">
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.25); color: #FCA5A5;">
-                ❌ No
-              </span>
+              <span class="badge badge-red">❌ No</span>
             </td>
             <td class="px-5 py-4 text-center">
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #6EE7B7;">
-                ✓ Yes
-              </span>
+              <span class="badge badge-green">✓ Yes</span>
             </td>
             <td class="px-5 py-4 text-center">
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); color: #FCD34D;">
-                ⚠ Costly
-              </span>
+              <span class="badge badge-amber">⚠ Costly</span>
             </td>
           </tr>
 
           <tr style="border-bottom: 1px solid var(--border); background: var(--bg-surface);">
-            <td class="px-5 py-4 font-semibold" style="color: #CBD5E1;">Easy to maintain?</td>
+            <td class="px-5 py-4 font-semibold t-base">Easy to maintain?</td>
             <td class="px-5 py-4 text-center">
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.25); color: #FCA5A5;">
-                ❌ No
-              </span>
+              <span class="badge badge-red">❌ No</span>
             </td>
             <td class="px-5 py-4 text-center">
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #6EE7B7;">
-                ✓ Yes
-              </span>
+              <span class="badge badge-green">✓ Yes</span>
             </td>
             <td class="px-5 py-4 text-center">
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.25); color: #FCA5A5;">
-                ❌ No
-              </span>
+              <span class="badge badge-red">❌ No</span>
             </td>
           </tr>
 
           <tr style="border-bottom: 1px solid var(--border); background: var(--bg-surface);">
-            <td class="px-5 py-4 font-semibold" style="color: #CBD5E1;">Code duplication?</td>
+            <td class="px-5 py-4 font-semibold t-base">Code duplication?</td>
             <td class="px-5 py-4 text-center">
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); color: #FCD34D;">
-                ⚠ Some
-              </span>
+              <span class="badge badge-amber">⚠ Some</span>
             </td>
             <td class="px-5 py-4 text-center">
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #6EE7B7;">
-                ✓ None
-              </span>
+              <span class="badge badge-green">✓ None</span>
             </td>
             <td class="px-5 py-4 text-center">
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.25); color: #FCA5A5;">
-                💥 Heavy
-              </span>
+              <span class="badge badge-red">💥 Heavy</span>
             </td>
           </tr>
 
           <tr style="background: var(--bg-surface);">
-            <td class="px-5 py-4 font-semibold" style="color: #CBD5E1;">Recommended?</td>
+            <td class="px-5 py-4 font-semibold t-base">Recommended?</td>
             <td class="px-5 py-4 text-center">
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.25); color: #FCA5A5;">
-                ❌ Never
-              </span>
+              <span class="badge badge-red">❌ Never</span>
             </td>
             <td class="px-5 py-4 text-center">
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #6EE7B7;">
-                ✓ Always
-              </span>
+              <span class="badge badge-green">✓ Always</span>
             </td>
             <td class="px-5 py-4 text-center">
-              <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); color: #FCD34D;">
-                ⚠ Avoid
-              </span>
+              <span class="badge badge-amber">⚠ Avoid</span>
             </td>
           </tr>
 
@@ -150,54 +102,45 @@
   </div>
 
   <!-- Key Takeaways -->
-  <h2 class="text-xl font-bold mb-5" style="color: #F1F5F9;">Key Takeaways</h2>
+  <h2 class="section-h2">Key Takeaways</h2>
   <div class="space-y-4 mb-12">
 
-    <div class="rounded-2xl p-5 flex gap-5" style="background: var(--bg-surface); border: 1px solid var(--border);">
-      <div class="font-black text-lg w-10 h-10 flex items-center justify-center rounded-xl shrink-0"
-           style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.25); color: #A5B4FC;">
-        1
-      </div>
+    <div class="rounded-2xl p-5 flex gap-5 panel panel-border">
+      <div class="num-badge num-badge-indigo">1</div>
       <div>
-        <p class="font-semibold mb-1" style="color: #E2E8F0;">LSP is about behavioural contracts, not just inheritance syntax</p>
-        <p class="text-sm" style="color: #64748B;">
+        <p class="font-semibold mb-1 t-base">LSP is about behavioural contracts, not just inheritance syntax</p>
+        <p class="text-sm t-dim">
           A subtype that compiles and inherits is not automatically LSP-compliant.
-          The key question is: <em style="color: #94A3B8;">"Can I swap this subtype in without any caller knowing?"</em>
+          The key question is: <em class="t-muted">"Can I swap this subtype in without any caller knowing?"</em>
           If the answer is no, the hierarchy is wrong.
         </p>
       </div>
     </div>
 
-    <div class="rounded-2xl p-5 flex gap-5" style="background: var(--bg-surface); border: 1px solid var(--border);">
-      <div class="font-black text-lg w-10 h-10 flex items-center justify-center rounded-xl shrink-0"
-           style="background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); color: #FCA5A5;">
-        2
-      </div>
+    <div class="rounded-2xl p-5 flex gap-5 panel panel-border">
+      <div class="num-badge num-badge-red">2</div>
       <div>
-        <p class="font-semibold mb-1" style="color: #E2E8F0;">A subclass that throws exceptions for inherited methods violates the contract</p>
-        <p class="text-sm" style="color: #64748B;">
-          <code class="px-1.5 py-0.5 rounded text-xs" style="background: var(--bg-raised); color: #94A3B8; font-family: 'JetBrains Mono', monospace;">ElectricScooter.startEngine()</code>
+        <p class="font-semibold mb-1 t-base">A subclass that throws exceptions for inherited methods violates the contract</p>
+        <p class="text-sm t-dim">
+          <code class="chip chip-neutral">ElectricScooter.startEngine()</code>
           throwing
-          <code class="px-1.5 py-0.5 rounded text-xs" style="background: var(--bg-raised); color: #94A3B8; font-family: 'JetBrains Mono', monospace;">Error("No engine!")</code>
+          <code class="chip chip-neutral">Error("No engine!")</code>
           is the textbook violation.
-          The parent promised a <code class="px-1.5 py-0.5 rounded text-xs" style="background: var(--bg-raised); color: #94A3B8; font-family: 'JetBrains Mono', monospace;">string</code>
+          The parent promised a <code class="chip chip-neutral">string</code>
           — the child delivers a crash. That is a broken contract, regardless of whether TypeScript allows it.
         </p>
       </div>
     </div>
 
-    <div class="rounded-2xl p-5 flex gap-5" style="background: var(--bg-surface); border: 1px solid var(--border);">
-      <div class="font-black text-lg w-10 h-10 flex items-center justify-center rounded-xl shrink-0"
-           style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); color: #FCD34D;">
-        3
-      </div>
+    <div class="rounded-2xl p-5 flex gap-5 panel panel-border">
+      <div class="num-badge num-badge-amber">3</div>
       <div>
-        <p class="font-semibold mb-1" style="color: #E2E8F0;">Over-applying LSP creates unnecessary abstractions — use it when substitution is real</p>
-        <p class="text-sm" style="color: #64748B;">
+        <p class="font-semibold mb-1 t-base">Over-applying LSP creates unnecessary abstractions — use it when substitution is real</p>
+        <p class="text-sm t-dim">
           Giving every vehicle its own interface
-          (<code class="px-1.5 py-0.5 rounded text-xs" style="background: var(--bg-raised); color: #94A3B8; font-family: 'JetBrains Mono', monospace;">ITruck</code>,
-          <code class="px-1.5 py-0.5 rounded text-xs" style="background: var(--bg-raised); color: #94A3B8; font-family: 'JetBrains Mono', monospace;">IMotorcycle</code>,
-          <code class="px-1.5 py-0.5 rounded text-xs" style="background: var(--bg-raised); color: #94A3B8; font-family: 'JetBrains Mono', monospace;">IElectricScooter</code>)
+          (<code class="chip chip-neutral">ITruck</code>,
+          <code class="chip chip-neutral">IMotorcycle</code>,
+          <code class="chip chip-neutral">IElectricScooter</code>)
           violates DRY and multiplies maintenance cost. Abstractions should emerge from genuine substitutability — not be imposed on every type.
         </p>
       </div>
@@ -206,26 +149,20 @@
   </div>
 
   <!-- Discussion Questions -->
-  <h2 class="text-xl font-bold mb-5" style="color: #F1F5F9;">Discussion Questions</h2>
+  <h2 class="section-h2">Discussion Questions</h2>
   <div class="space-y-4 mb-12">
 
-    <div class="rounded-2xl p-5 flex gap-5" style="background: var(--bg-surface); border: 1px solid rgba(99,102,241,0.25);">
-      <div class="font-black text-lg w-10 h-10 flex items-center justify-center rounded-xl shrink-0"
-           style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.25); color: #A5B4FC;">
-        ?
-      </div>
+    <div class="rounded-2xl p-5 flex gap-5 panel panel-indigo">
+      <div class="num-badge num-badge-indigo">?</div>
       <div>
-        <p class="font-semibold" style="color: #E2E8F0;">If a user opens the logistics app and it crashes while trying to manage an electric scooter route — who feels that impact first, and how does it affect the product?</p>
+        <p class="font-semibold t-base">If a user opens the logistics app and it crashes while trying to manage an electric scooter route — who feels that impact first, and how does it affect the product?</p>
       </div>
     </div>
 
-    <div class="rounded-2xl p-5 flex gap-5" style="background: var(--bg-surface); border: 1px solid rgba(99,102,241,0.25);">
-      <div class="font-black text-lg w-10 h-10 flex items-center justify-center rounded-xl shrink-0"
-           style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.25); color: #A5B4FC;">
-        ?
-      </div>
+    <div class="rounded-2xl p-5 flex gap-5 panel panel-indigo">
+      <div class="num-badge num-badge-indigo">?</div>
       <div>
-        <p class="font-semibold" style="color: #E2E8F0;">If every time the team adds a new vehicle type the delivery of other features gets delayed — how would that influence your decisions as a product owner?</p>
+        <p class="font-semibold t-base">If every time the team adds a new vehicle type the delivery of other features gets delayed — how would that influence your decisions as a product owner?</p>
       </div>
     </div>
 
@@ -234,27 +171,18 @@
   <!-- Final Callout -->
   <div class="rounded-2xl p-8 text-center"
        style="background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.1)); border: 1px solid rgba(99,102,241,0.25);">
-    <p class="text-xs font-mono tracking-widest uppercase mb-3" style="color: #818CF8;">The Sweet Spot</p>
-    <p class="text-xl font-bold leading-relaxed mb-4" style="color: #E2E8F0;">
+    <p class="text-xs mono tracking-widest uppercase mb-3 t-indigo">The Sweet Spot</p>
+    <p class="text-xl font-bold leading-relaxed mb-4 t-base">
       "Apply LSP when objects are truly interchangeable in context."
     </p>
-    <p class="text-sm max-w-xl mx-auto mb-7" style="color: #64748B;">
+    <p class="text-sm max-w-xl mx-auto mb-7 t-dim">
       When you can iterate a list of mixed types, call a shared method, and every type
       honours the contract — you have achieved LSP. That is the goal.
     </p>
     <div class="flex justify-center gap-3 flex-wrap">
-      <span class="text-xs font-semibold px-4 py-2 rounded-full"
-            style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.25); color: #A5B4FC;">
-        ✓ Segregate interfaces
-      </span>
-      <span class="text-xs font-semibold px-4 py-2 rounded-full"
-            style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.25); color: #A5B4FC;">
-        ✓ Use type guards
-      </span>
-      <span class="text-xs font-semibold px-4 py-2 rounded-full"
-            style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.25); color: #A5B4FC;">
-        ✓ Honour the contract
-      </span>
+      <span class="badge badge-indigo">✓ Segregate interfaces</span>
+      <span class="badge badge-indigo">✓ Use type guards</span>
+      <span class="badge badge-indigo">✓ Honour the contract</span>
     </div>
   </div>
 

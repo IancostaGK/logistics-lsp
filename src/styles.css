@@ -2,12 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ═══════════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════════ */
 :root {
+  /* Backgrounds */
   --bg-base:    #080D18;
   --bg-surface: #0E1525;
   --bg-raised:  #14203A;
+
+  /* Borders */
   --border:     #1A2840;
   --border-hi:  #253550;
+
+  /* Text */
+  --text-hi:    #F1F5F9;
+  --text-base:  #E2E8F0;
+  --text-muted: #94A3B8;
+  --text-dim:   #64748B;
+  --text-ghost: #3D4F6E;
 }
 
 body {
@@ -28,3 +41,159 @@ code, pre {
 
 .scrollbar-none::-webkit-scrollbar { display: none; }
 .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ═══════════════════════════════════════════════════════
+   COMPONENT LIBRARY
+═══════════════════════════════════════════════════════ */
+@layer components {
+
+  /* ── Monospace font ──────────────────────────────── */
+  .mono { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+
+  /* ── Text color aliases ──────────────────────────── */
+  .t-hi    { color: var(--text-hi); }
+  .t-base  { color: var(--text-base); }
+  .t-muted { color: var(--text-muted); }
+  .t-dim   { color: var(--text-dim); }
+  .t-ghost { color: var(--text-ghost); }
+
+  .t-red      { color: #F87171; }
+  .t-red-hi   { color: #FCA5A5; }
+  .t-green    { color: #34D399; }
+  .t-green-hi { color: #6EE7B7; }
+  .t-amber    { color: #FCD34D; }
+  .t-indigo   { color: #818CF8; }
+  .t-indigo-hi { color: #A5B4FC; }
+  .t-blue     { color: #60A5FA; }
+  .t-blue-hi  { color: #93C5FD; }
+  .t-teal     { color: #5EEAD4; }
+  .t-purple   { color: #C084FC; }
+
+  /* ── Scenario numbers ────────────────────────────── */
+  .scenario-num {
+    @apply font-black text-[5rem] leading-none select-none shrink-0;
+    font-family: 'Syne', sans-serif;
+  }
+  .scenario-num-red   { color: #1A2840; }
+  .scenario-num-green { color: #122030; }
+  .scenario-num-amber { color: #1E1800; }
+
+  /* ── Badges ─────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .badge-red    { background: rgba(239,68,68,0.12);  border: 1px solid rgba(239,68,68,0.3);  color: #FCA5A5; }
+  .badge-green  { background: rgba(16,185,129,0.1);  border: 1px solid rgba(16,185,129,0.3); color: #6EE7B7; }
+  .badge-amber  { background: rgba(245,158,11,0.1);  border: 1px solid rgba(245,158,11,0.3); color: #FCD34D; }
+  .badge-indigo { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); color: #818CF8; }
+  .badge-teal   { background: rgba(20,184,166,0.08); border: 1px solid rgba(20,184,166,0.2); color: #5EEAD4; }
+  .badge-blue   { background: rgba(59,130,246,0.1);  border: 1px solid rgba(59,130,246,0.3); color: #93C5FD; }
+
+  /* Section-header badges (larger, tracking) */
+  .badge-lg {
+    @apply inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase px-4 py-2 rounded-full;
+  }
+  .badge-lg-indigo { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); color: #818CF8; }
+  .badge-lg-teal   { background: rgba(20,184,166,0.08); border: 1px solid rgba(20,184,166,0.2); color: #5EEAD4; }
+
+  /* ── Inline code chips ──────────────────────────── */
+  .chip {
+    @apply px-1.5 py-0.5 rounded text-xs;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .chip-red     { background: rgba(239,68,68,0.2);   color: #FCA5A5; }
+  .chip-green   { background: rgba(16,185,129,0.2);  color: #6EE7B7; }
+  .chip-amber   { background: rgba(245,158,11,0.15); color: #FCD34D; }
+  .chip-indigo  { background: rgba(99,102,241,0.15); color: #A5B4FC; }
+  .chip-neutral { background: var(--bg-raised);      color: #94A3B8; }
+
+  /* ── Description boxes ──────────────────────────── */
+  .desc-box {
+    @apply rounded-xl p-5 text-sm leading-relaxed;
+  }
+  .desc-box-red    { background: rgba(239,68,68,0.06);  border: 1px solid rgba(239,68,68,0.2);  color: rgba(252,165,165,0.8); }
+  .desc-box-green  { background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); color: rgba(110,231,183,0.8); }
+  .desc-box-amber  { background: rgba(245,158,11,0.05); border: 1px solid rgba(245,158,11,0.2); color: rgba(252,211,77,0.75); }
+  .desc-box-indigo { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); color: rgba(165,180,252,0.8); }
+
+  /* ── Panels ─────────────────────────────────────── */
+  .panel {
+    @apply rounded-2xl overflow-hidden;
+    background: var(--bg-surface);
+  }
+  .panel-red    { border: 1px solid rgba(239,68,68,0.25); }
+  .panel-green  { border: 1px solid rgba(16,185,129,0.25); }
+  .panel-amber  { border: 1px solid rgba(245,158,11,0.25); }
+  .panel-indigo { border: 1px solid rgba(99,102,241,0.25); }
+  .panel-border { border: 1px solid var(--border); }
+
+  .panel-hd { @apply px-5 py-4; }
+  .panel-hd-raised { background: var(--bg-raised);      border-bottom: 1px solid var(--border); }
+  .panel-hd-red    { background: rgba(239,68,68,0.08);  border-bottom: 1px solid rgba(239,68,68,0.2); }
+  .panel-hd-green  { background: rgba(16,185,129,0.08); border-bottom: 1px solid rgba(16,185,129,0.2); }
+  .panel-hd-amber  { background: rgba(245,158,11,0.08); border-bottom: 1px solid rgba(245,158,11,0.2); }
+  .panel-hd-indigo { background: rgba(99,102,241,0.08); border-bottom: 1px solid rgba(99,102,241,0.2); }
+
+  /* ── Card header separator ──────────────────────── */
+  .card-sep { border-bottom: 1px solid var(--border); }
+
+  /* ── Buttons ─────────────────────────────────────── */
+  .btn {
+    @apply flex items-center gap-2 font-semibold py-2.5 px-5 rounded-xl text-sm
+           transition-all duration-200 hover:opacity-90 active:scale-95;
+  }
+  .btn-red    { background: rgba(239,68,68,0.15);  border: 1px solid rgba(239,68,68,0.35);  color: #FCA5A5; }
+  .btn-green  { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3);  color: #6EE7B7; }
+  .btn-amber  { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3);  color: #FCD34D; }
+  .btn-ghost  { background: var(--bg-raised);      border: 1px solid var(--border);         color: #94A3B8; }
+
+  .btn-dispatch {
+    @apply w-full font-semibold py-2.5 px-4 rounded-xl text-sm
+           transition-all duration-200 hover:opacity-90 active:scale-95;
+  }
+  .btn-dispatch-red   { background: rgba(239,68,68,0.12);  border: 1px solid rgba(239,68,68,0.25);  color: #FCA5A5; }
+  .btn-dispatch-green { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25); color: #6EE7B7; }
+  .btn-dispatch-amber { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.25); color: #FCD34D; }
+
+  /* ── Status areas ────────────────────────────────── */
+  .status-idle {
+    @apply min-h-14 mb-4 text-sm rounded-xl p-3.5 transition-all duration-300;
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+  }
+
+  /* ── Code block ──────────────────────────────────── */
+  .code-block {
+    @apply rounded-2xl overflow-hidden;
+    background: #060B14;
+    border: 1px solid var(--border);
+  }
+  .terminal-chrome {
+    @apply flex items-center gap-2 px-4 py-3;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Number badges (takeaway items) ─────────────── */
+  .num-badge {
+    @apply font-black text-lg w-10 h-10 flex items-center justify-center rounded-xl shrink-0;
+  }
+  .num-badge-indigo { background: rgba(99,102,241,0.1);  border: 1px solid rgba(99,102,241,0.25); color: #A5B4FC; }
+  .num-badge-red    { background: rgba(239,68,68,0.1);   border: 1px solid rgba(239,68,68,0.25);  color: #FCA5A5; }
+  .num-badge-amber  { background: rgba(245,158,11,0.1);  border: 1px solid rgba(245,158,11,0.25); color: #FCD34D; }
+
+  /* ── Section headings ────────────────────────────── */
+  .section-h2 {
+    @apply text-xl font-bold mb-5;
+    color: var(--text-hi);
+  }
+
+  /* ── Property tags (overengineered vehicle cards) ── */
+  .prop-tag {
+    @apply text-xs px-2 py-1 rounded-lg;
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+  }
+}

@@ -2,18 +2,17 @@
 
   <!-- Hero -->
   <div class="text-center mb-16">
-    <div class="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase mb-5 px-4 py-2 rounded-full"
-         style="background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); color: #818CF8;">
+    <div class="badge-lg badge-lg-indigo mb-5">
       SOLID Principles · The L
     </div>
-    <h1 class="text-5xl sm:text-6xl font-black mb-4 leading-tight" style="color: #F1F5F9;">
-      Liskov Substitution<br/>
-      <span style="background: linear-gradient(135deg, #6366F1, #8B5CF6, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-4 leading-tight t-hi">
+      Liskov Substitution
+      <span style="background: linear-gradient(135deg, #6366F1, #8B5CF6, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block;">
         Principle
       </span>
     </h1>
-    <p class="text-lg" style="color: #64748B;">
-      The <span style="color: #818CF8; font-family: 'JetBrains Mono', monospace; font-weight: 600;">L</span> in SOLID — a guide to safe inheritance
+    <p class="text-lg t-dim">
+      The <span class="t-indigo mono font-semibold">L</span> in SOLID — a guide to safe inheritance
     </p>
   </div>
 
@@ -22,22 +21,22 @@
        style="background: var(--bg-surface); border: 1px solid rgba(99,102,241,0.25);">
     <div class="absolute top-0 left-0 w-1 h-full rounded-l-2xl"
          style="background: linear-gradient(to bottom, #6366F1, #8B5CF6);"></div>
-    <div class="px-8 py-8 pl-10">
-      <p class="text-xs font-mono tracking-widest uppercase mb-4" style="color: #6366F1;">
+    <div class="px-6 sm:px-8 py-8 pl-8 sm:pl-10">
+      <p class="text-xs mono tracking-widest uppercase mb-4 t-indigo">
         Formal Definition — Barbara Liskov, 1987
       </p>
-      <blockquote class="text-2xl font-bold leading-relaxed mb-5" style="color: #E2E8F0;">
+      <blockquote class="text-xl sm:text-2xl font-bold leading-relaxed mb-5 t-base">
         "Objects of a subclass should be replaceable with objects of the superclass
         without breaking the application."
       </blockquote>
-      <p class="text-sm" style="color: #64748B;">
-        If <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(99,102,241,0.15); color: #A5B4FC;">S</code>
+      <p class="text-sm t-dim">
+        If <code class="chip chip-indigo">S</code>
         is a subtype of
-        <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(99,102,241,0.15); color: #A5B4FC;">T</code>,
+        <code class="chip chip-indigo">T</code>,
         then objects of type
-        <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(99,102,241,0.15); color: #A5B4FC;">T</code>
+        <code class="chip chip-indigo">T</code>
         may be replaced with objects of type
-        <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(99,102,241,0.15); color: #A5B4FC;">S</code>
+        <code class="chip chip-indigo">S</code>
         without altering the correctness of the program.
       </p>
     </div>
@@ -48,17 +47,17 @@
        style="background: rgba(245,158,11,0.05); border: 1px solid rgba(245,158,11,0.2);">
     <span class="text-4xl select-none shrink-0 mt-0.5">🦆</span>
     <div>
-      <p class="font-bold text-base mb-2" style="color: #FCD34D;">The Duck Analogy</p>
+      <p class="font-bold text-base mb-2 t-amber">The Duck Analogy</p>
       <p class="text-sm leading-relaxed italic mb-3" style="color: rgba(252,211,77,0.7);">
         "If it looks like a duck and quacks like a duck but needs batteries —
         you have the wrong abstraction."
       </p>
       <p class="text-sm leading-relaxed" style="color: rgba(252,211,77,0.55);">
-        An <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(245,158,11,0.15); color: #FCD34D;">ElectricScooter</code>
+        An <code class="chip chip-amber">ElectricScooter</code>
         that extends
-        <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(245,158,11,0.15); color: #FCD34D;">VehicleBase</code>
+        <code class="chip chip-amber">VehicleBase</code>
         and throws on
-        <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(245,158,11,0.15); color: #FCD34D;">startEngine()</code>
+        <code class="chip chip-amber">startEngine()</code>
         is a scooter pretending to be an engine vehicle.
         It <em>looks</em> substitutable, but it isn't.
       </p>
@@ -66,22 +65,21 @@
   </div>
 
   <!-- Hierarchy Comparison -->
-  <h2 class="text-xl font-bold mb-5" style="color: #F1F5F9;">Hierarchy Comparison</h2>
+  <h2 class="section-h2">Hierarchy Comparison</h2>
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-12">
 
     <!-- Wrong Hierarchy -->
-    <div class="rounded-2xl overflow-hidden"
-         style="background: var(--bg-surface); border: 1px solid rgba(239,68,68,0.25);">
-      <div class="px-5 py-3.5" style="background: rgba(239,68,68,0.08); border-bottom: 1px solid rgba(239,68,68,0.2);">
-        <p class="font-bold text-sm" style="color: #F87171;">❌ Wrong Hierarchy</p>
+    <div class="panel panel-red">
+      <div class="panel-hd panel-hd-red">
+        <p class="font-bold text-sm t-red">❌ Wrong Hierarchy</p>
         <p class="text-xs mt-0.5" style="color: rgba(248,113,113,0.6);">All subclasses forced to implement startEngine()</p>
       </div>
       <div class="p-6">
         <div class="flex justify-center mb-4">
-          <div class="px-5 py-2.5 rounded-xl text-xs font-bold text-center font-mono"
+          <div class="px-5 py-2.5 rounded-xl text-xs font-bold text-center mono"
                style="background: var(--bg-raised); border: 1px solid var(--border-hi); color: #E2E8F0;">
             VehicleBase
-            <span class="block font-normal text-xs mt-0.5" style="color: #64748B;">startEngine(): string</span>
+            <span class="block font-normal text-xs mt-0.5 t-dim">startEngine(): string</span>
           </div>
         </div>
         <div class="flex justify-center mb-4">
@@ -91,20 +89,20 @@
             <div class="w-px h-6 bg-slate-700"></div>
           </div>
         </div>
-        <div class="flex justify-between gap-2">
-          <div class="rounded-xl px-3 py-2.5 text-xs text-center flex-1 font-mono"
+        <div class="grid grid-cols-3 gap-2">
+          <div class="rounded-xl px-2 py-2.5 text-xs text-center mono"
                style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2);">
-            <div class="font-bold" style="color: #34D399;">Truck</div>
+            <div class="font-bold t-green">Truck</div>
             <div class="text-xs mt-0.5" style="color: rgba(52,211,153,0.6);">startEngine() ✓</div>
           </div>
-          <div class="rounded-xl px-3 py-2.5 text-xs text-center flex-1 font-mono"
+          <div class="rounded-xl px-2 py-2.5 text-xs text-center mono"
                style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2);">
-            <div class="font-bold" style="color: #34D399;">Motorcycle</div>
+            <div class="font-bold t-green">Motorcycle</div>
             <div class="text-xs mt-0.5" style="color: rgba(52,211,153,0.6);">startEngine() ✓</div>
           </div>
-          <div class="rounded-xl px-3 py-2.5 text-xs text-center flex-1 font-mono"
+          <div class="rounded-xl px-2 py-2.5 text-xs text-center mono"
                style="background: rgba(239,68,68,0.08); border: 2px solid rgba(239,68,68,0.4);">
-            <div class="font-bold" style="color: #F87171;">ElectricScooter</div>
+            <div class="font-bold t-red truncate">ElectricScooter</div>
             <div class="text-xs mt-0.5" style="color: rgba(248,113,113,0.7);">startEngine() 💥</div>
           </div>
         </div>
@@ -116,15 +114,14 @@
     </div>
 
     <!-- Correct Hierarchy -->
-    <div class="rounded-2xl overflow-hidden"
-         style="background: var(--bg-surface); border: 1px solid rgba(16,185,129,0.25);">
-      <div class="px-5 py-3.5" style="background: rgba(16,185,129,0.08); border-bottom: 1px solid rgba(16,185,129,0.2);">
-        <p class="font-bold text-sm" style="color: #34D399;">✅ Correct Hierarchy</p>
+    <div class="panel panel-green">
+      <div class="panel-hd panel-hd-green">
+        <p class="font-bold text-sm t-green">✅ Correct Hierarchy</p>
         <p class="text-xs mt-0.5" style="color: rgba(52,211,153,0.6);">Each type only declares what it can do</p>
       </div>
       <div class="p-6">
         <div class="flex justify-center mb-4">
-          <div class="px-5 py-2.5 rounded-xl text-xs font-bold text-center font-mono"
+          <div class="px-5 py-2.5 rounded-xl text-xs font-bold text-center mono"
                style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3); color: #A5B4FC;">
             Vehicle
             <span class="block font-normal text-xs mt-0.5" style="color: rgba(165,180,252,0.5);">id, name, icon</span>
@@ -137,34 +134,34 @@
           </div>
         </div>
         <div class="flex gap-3 mb-3">
-          <div class="rounded-xl px-3 py-2.5 text-xs text-center flex-1 font-mono"
+          <div class="rounded-xl px-3 py-2.5 text-xs text-center flex-1 mono"
                style="background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.25);">
-            <div class="font-bold" style="color: #60A5FA;">EngineVehicle</div>
+            <div class="font-bold t-blue">EngineVehicle</div>
             <div class="text-xs mt-0.5" style="color: rgba(96,165,250,0.6);">startEngine()</div>
           </div>
-          <div class="rounded-xl px-3 py-2.5 text-xs text-center flex-1 font-mono"
+          <div class="rounded-xl px-3 py-2.5 text-xs text-center flex-1 mono"
                style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25);">
-            <div class="font-bold" style="color: #34D399;">ElectricVehicle</div>
+            <div class="font-bold t-green">ElectricVehicle</div>
             <div class="text-xs mt-0.5" style="color: rgba(52,211,153,0.6);">chargeBattery()</div>
           </div>
         </div>
         <div class="flex gap-3">
           <div class="flex gap-1.5 flex-1">
-            <div class="rounded-lg px-2 py-1.5 text-xs text-center flex-1 font-mono"
+            <div class="rounded-lg px-2 py-1.5 text-xs text-center flex-1 mono"
                  style="background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.2);">
-              <div class="font-bold" style="color: #60A5FA;">Truck</div>
+              <div class="font-bold t-blue">Truck</div>
               <div style="color: rgba(96,165,250,0.5);">✓</div>
             </div>
-            <div class="rounded-lg px-2 py-1.5 text-xs text-center flex-1 font-mono"
+            <div class="rounded-lg px-2 py-1.5 text-xs text-center flex-1 mono"
                  style="background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.2);">
-              <div class="font-bold" style="color: #60A5FA;">Moto</div>
+              <div class="font-bold t-blue">Moto</div>
               <div style="color: rgba(96,165,250,0.5);">✓</div>
             </div>
           </div>
           <div class="flex-1">
-            <div class="rounded-lg px-2 py-1.5 text-xs text-center font-mono"
+            <div class="rounded-lg px-2 py-1.5 text-xs text-center mono"
                  style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2);">
-              <div class="font-bold" style="color: #34D399;">ElectricScooter</div>
+              <div class="font-bold t-green">ElectricScooter</div>
               <div style="color: rgba(52,211,153,0.5);">✓</div>
             </div>
           </div>
@@ -179,55 +176,53 @@
   </div>
 
   <!-- When to Apply -->
-  <h2 class="text-xl font-bold mb-5" style="color: #F1F5F9;">When to Apply LSP</h2>
+  <h2 class="section-h2">When to Apply LSP</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
 
-    <div class="rounded-2xl overflow-hidden"
-         style="background: var(--bg-surface); border: 1px solid rgba(16,185,129,0.2);">
-      <div class="px-5 py-4" style="background: rgba(16,185,129,0.08); border-bottom: 1px solid rgba(16,185,129,0.2);">
-        <p class="font-bold text-sm" style="color: #34D399;">✅ Apply LSP when…</p>
+    <div class="panel panel-green" style="border-color: rgba(16,185,129,0.2);">
+      <div class="panel-hd panel-hd-green">
+        <p class="font-bold text-sm t-green">✅ Apply LSP when…</p>
       </div>
       <ul class="p-5 space-y-3.5">
-        <li class="flex gap-3 text-sm" style="color: #94A3B8;">
+        <li class="flex gap-3 text-sm t-muted">
           <span class="shrink-0 mt-0.5" style="color: #10B981;">▸</span>
-          <span>Subtypes are <span style="color: #E2E8F0;">genuinely interchangeable</span> in the same context (e.g. all vehicles that start an engine)</span>
+          <span>Subtypes are <span class="t-base">genuinely interchangeable</span> in the same context (e.g. all vehicles that start an engine)</span>
         </li>
-        <li class="flex gap-3 text-sm" style="color: #94A3B8;">
+        <li class="flex gap-3 text-sm t-muted">
           <span class="shrink-0 mt-0.5" style="color: #10B981;">▸</span>
           <span>You iterate a collection of mixed subtypes and call a shared method</span>
         </li>
-        <li class="flex gap-3 text-sm" style="color: #94A3B8;">
+        <li class="flex gap-3 text-sm t-muted">
           <span class="shrink-0 mt-0.5" style="color: #10B981;">▸</span>
           <span>A method accepts a base type and must work with any subtype</span>
         </li>
-        <li class="flex gap-3 text-sm" style="color: #94A3B8;">
+        <li class="flex gap-3 text-sm t-muted">
           <span class="shrink-0 mt-0.5" style="color: #10B981;">▸</span>
-          <span>You want to extend behaviour <span style="color: #E2E8F0;">without modifying existing code</span> (Open/Closed)</span>
+          <span>You want to extend behaviour <span class="t-base">without modifying existing code</span> (Open/Closed)</span>
         </li>
       </ul>
     </div>
 
-    <div class="rounded-2xl overflow-hidden"
-         style="background: var(--bg-surface); border: 1px solid rgba(239,68,68,0.2);">
-      <div class="px-5 py-4" style="background: rgba(239,68,68,0.08); border-bottom: 1px solid rgba(239,68,68,0.2);">
-        <p class="font-bold text-sm" style="color: #F87171;">❌ Don't force LSP when…</p>
+    <div class="panel panel-red" style="border-color: rgba(239,68,68,0.2);">
+      <div class="panel-hd panel-hd-red">
+        <p class="font-bold text-sm t-red">❌ Don't force LSP when…</p>
       </div>
       <ul class="p-5 space-y-3.5">
-        <li class="flex gap-3 text-sm" style="color: #94A3B8;">
+        <li class="flex gap-3 text-sm t-muted">
           <span class="shrink-0 mt-0.5" style="color: #EF4444;">▸</span>
-          <span>Subtypes have <span style="color: #E2E8F0;">fundamentally different contracts</span> (electric vs combustion vehicles)</span>
+          <span>Subtypes have <span class="t-base">fundamentally different contracts</span> (electric vs combustion vehicles)</span>
         </li>
-        <li class="flex gap-3 text-sm" style="color: #94A3B8;">
+        <li class="flex gap-3 text-sm t-muted">
           <span class="shrink-0 mt-0.5" style="color: #EF4444;">▸</span>
           <span>You would need to throw exceptions or return dummy values to satisfy the parent's interface</span>
         </li>
-        <li class="flex gap-3 text-sm" style="color: #94A3B8;">
+        <li class="flex gap-3 text-sm t-muted">
           <span class="shrink-0 mt-0.5" style="color: #EF4444;">▸</span>
-          <span>Creating a shared base requires <span style="color: #E2E8F0;">duplicating fields</span> across every subtype (→ use Interface Segregation instead)</span>
+          <span>Creating a shared base requires <span class="t-base">duplicating fields</span> across every subtype (→ use Interface Segregation instead)</span>
         </li>
-        <li class="flex gap-3 text-sm" style="color: #94A3B8;">
+        <li class="flex gap-3 text-sm t-muted">
           <span class="shrink-0 mt-0.5" style="color: #EF4444;">▸</span>
-          <span>There is only <span style="color: #E2E8F0;">one concrete implementation</span> — abstraction adds no value</span>
+          <span>There is only <span class="t-base">one concrete implementation</span> — abstraction adds no value</span>
         </li>
       </ul>
     </div>

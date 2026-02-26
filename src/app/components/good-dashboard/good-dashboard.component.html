@@ -7,49 +7,37 @@
       <!-- Header -->
       <div class="mb-8">
         <div class="flex items-start gap-4 mb-5">
-          <div class="font-black text-[5rem] leading-none select-none shrink-0" style="color: #122030; font-family: 'Syne', sans-serif;">02</div>
+          <div class="scenario-num scenario-num-green">02</div>
           <div class="pt-2">
             <div class="flex items-center gap-3 mb-2 flex-wrap">
-              <h1 class="text-3xl font-black" style="color: #F1F5F9;">Scenario 2</h1>
-              <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full"
-                    style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: #6EE7B7; font-family: 'JetBrains Mono', monospace;">
-                ✓ LSP COMPLIANT
-              </span>
+              <h1 class="text-3xl font-black t-hi">Scenario 2</h1>
+              <span class="badge badge-green">✓ LSP COMPLIANT</span>
             </div>
-            <p class="text-base font-medium" style="color: #64748B;">Good: Segregated Interfaces with Type Guards</p>
+            <p class="text-base font-medium t-dim">Good: Segregated Interfaces with Type Guards</p>
           </div>
         </div>
 
-        <div class="rounded-xl p-5 text-sm leading-relaxed"
-             style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); color: rgba(110,231,183,0.8);">
-          <strong style="color: #34D399;">Solution:</strong> We no longer force
-          <code class="px-1.5 py-0.5 rounded text-xs ml-1" style="background: rgba(16,185,129,0.2); color: #6EE7B7;">ElectricScooter</code>
+        <div class="desc-box desc-box-green">
+          <strong class="t-green">Solution:</strong> We no longer force
+          <code class="chip chip-green ml-1">ElectricScooter</code>
           to implement an incompatible method.
-          <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(16,185,129,0.2); color: #6EE7B7;">EngineVehicle</code>
+          <code class="chip chip-green">EngineVehicle</code>
           and
-          <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(16,185,129,0.2); color: #6EE7B7;">ElectricVehicle</code>
+          <code class="chip chip-green">ElectricVehicle</code>
           extend a shared
-          <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(16,185,129,0.2); color: #6EE7B7;">Vehicle</code>
+          <code class="chip chip-green">Vehicle</code>
           base — type guards dispatch the right action for each type.
-          <strong style="color: #6EE7B7;">No crashes possible.</strong>
+          <strong class="t-green-hi">No crashes possible.</strong>
         </div>
       </div>
 
       <!-- Action Buttons -->
       <div class="flex gap-3 mb-8 flex-wrap">
-        <button
-          (click)="dispatchAll()"
-          class="flex items-center gap-2 font-semibold py-2.5 px-5 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
-          style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: #6EE7B7;">
+        <button (click)="dispatchAll()" class="btn btn-green">
           ✅ Dispatch All
           <span class="text-xs" style="color: rgba(110,231,183,0.5);">(no crash)</span>
         </button>
-        <button
-          (click)="reset()"
-          class="flex items-center gap-2 font-semibold py-2.5 px-5 rounded-xl text-sm transition-all duration-200 hover:opacity-90"
-          style="background: var(--bg-raised); border: 1px solid var(--border); color: #94A3B8;">
-          ↺ Reset
-        </button>
+        <button (click)="reset()" class="btn btn-ghost">↺ Reset</button>
       </div>
 
       <!-- Cards Grid -->
@@ -61,9 +49,9 @@
             [style.border]="card.result ? '1px solid rgba(16,185,129,0.45)' : '1px solid var(--border)'"
           >
             <!-- Card Header -->
-            <div class="p-5 pb-4" style="border-bottom: 1px solid var(--border);">
+            <div class="p-5 pb-4 card-sep">
               <div class="text-4xl mb-3 select-none">{{ card.vehicle.icon }}</div>
-              <h3 class="font-bold text-base mb-2" style="color: #E2E8F0;">{{ card.vehicle.name }}</h3>
+              <h3 class="font-bold text-base mb-2 t-base">{{ card.vehicle.name }}</h3>
               <!-- Type Badge -->
               <span
                 class="inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-full"
@@ -84,17 +72,14 @@
                 [style.border]="card.result ? '1px solid rgba(16,185,129,0.2)' : '1px solid var(--border)'"
               >
                 @if (card.result) {
-                  <p class="font-medium" style="color: #34D399;">✅ {{ card.result }}</p>
+                  <p class="font-medium t-green">✅ {{ card.result }}</p>
                 } @else {
-                  <p class="italic text-xs" style="color: #3D4F6E;">Press Dispatch to trigger the correct action</p>
+                  <p class="italic text-xs t-ghost">Press Dispatch to trigger the correct action</p>
                 }
               </div>
 
               <!-- Dispatch Button -->
-              <button
-                (click)="dispatch(card)"
-                class="w-full font-semibold py-2.5 px-4 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
-                style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25); color: #6EE7B7;">
+              <button (click)="dispatch(card)" class="btn-dispatch btn-dispatch-green">
                 {{ getActionLabel(card.vehicle) }}
               </button>
             </div>
@@ -103,31 +88,31 @@
       </div>
 
       <!-- Code Block -->
-      <div class="rounded-2xl overflow-hidden" style="background: #060B14; border: 1px solid var(--border);">
+      <div class="code-block">
         <!-- Terminal Chrome -->
-        <div class="flex items-center gap-2 px-4 py-3" style="border-bottom: 1px solid var(--border);">
+        <div class="terminal-chrome">
           <span class="w-3 h-3 rounded-full inline-block" style="background: rgba(239,68,68,0.7);"></span>
           <span class="w-3 h-3 rounded-full inline-block" style="background: rgba(245,158,11,0.7);"></span>
           <span class="w-3 h-3 rounded-full inline-block" style="background: rgba(16,185,129,0.7);"></span>
-          <span class="ml-3 text-xs" style="color: #3D4F6E; font-family: 'JetBrains Mono', monospace;">vehicle.interfaces.ts — The Solution</span>
+          <span class="ml-3 text-xs t-ghost mono">vehicle.interfaces.ts — The Solution</span>
         </div>
         <div class="p-6 overflow-x-auto">
-          <pre class="text-sm leading-relaxed" style="font-family: 'JetBrains Mono', monospace; color: #94A3B8;"><span style="color: #475569;">// Shared base — only common fields</span>
-<span style="color: #60A5FA;">interface</span> <span style="color: #34D399;">Vehicle</span> &#123; id: <span style="color: #67E8F9;">number</span>; name: <span style="color: #67E8F9;">string</span>; icon: <span style="color: #67E8F9;">string</span>; &#125;
+          <pre class="text-sm leading-relaxed mono t-muted"><span class="t-dim">// Shared base — only common fields</span>
+<span class="t-blue">interface</span> <span class="t-green">Vehicle</span> &#123; id: <span style="color: #67E8F9;">number</span>; name: <span style="color: #67E8F9;">string</span>; icon: <span style="color: #67E8F9;">string</span>; &#125;
 
-<span style="color: #475569;">// ✅ Only for vehicles that have engines</span>
-<span style="color: #60A5FA;">interface</span> <span style="color: #34D399;">EngineVehicle</span> <span style="color: #60A5FA;">extends</span> Vehicle &#123;
+<span class="t-dim">// ✅ Only for vehicles that have engines</span>
+<span class="t-blue">interface</span> <span class="t-green">EngineVehicle</span> <span class="t-blue">extends</span> Vehicle &#123;
   <span style="color: #FDE68A;">startEngine</span>(): <span style="color: #67E8F9;">string</span>;
 &#125;
 
-<span style="color: #475569;">// ✅ Only for electric vehicles</span>
-<span style="color: #60A5FA;">interface</span> <span style="color: #34D399;">ElectricVehicle</span> <span style="color: #60A5FA;">extends</span> Vehicle &#123;
+<span class="t-dim">// ✅ Only for electric vehicles</span>
+<span class="t-blue">interface</span> <span class="t-green">ElectricVehicle</span> <span class="t-blue">extends</span> Vehicle &#123;
   <span style="color: #FDE68A;">chargeBattery</span>(): <span style="color: #67E8F9;">string</span>;
 &#125;
 
-<span style="color: #475569;">// Type guards — safe dispatch, no try/catch needed</span>
-<span style="color: #60A5FA;">if</span> (<span style="color: #FDE68A;">isEngineVehicle</span>(v))   v.<span style="color: #FDE68A;">startEngine</span>();   <span style="color: #34D399;">// ✅ safe</span>
-<span style="color: #60A5FA;">if</span> (<span style="color: #FDE68A;">isElectricVehicle</span>(v)) v.<span style="color: #FDE68A;">chargeBattery</span>(); <span style="color: #34D399;">// ✅ safe</span></pre>
+<span class="t-dim">// Type guards — safe dispatch, no try/catch needed</span>
+<span class="t-blue">if</span> (<span style="color: #FDE68A;">isEngineVehicle</span>(v))   v.<span style="color: #FDE68A;">startEngine</span>();   <span class="t-green">// ✅ safe</span>
+<span class="t-blue">if</span> (<span style="color: #FDE68A;">isElectricVehicle</span>(v)) v.<span style="color: #FDE68A;">chargeBattery</span>(); <span class="t-green">// ✅ safe</span></pre>
         </div>
       </div>
 
