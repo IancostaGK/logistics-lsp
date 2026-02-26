@@ -6,76 +6,93 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
   template: `
-    <nav class="bg-slate-900 text-white shadow-lg sticky top-0 z-50">
-      <div class="max-w-6xl mx-auto px-4 py-0 flex items-center gap-1">
-        <span class="text-base font-bold text-indigo-400 mr-3 py-4 shrink-0">🚚 Logistics LSP</span>
+    <nav class="sticky top-0 z-50 scrollbar-none"
+         style="background-color: var(--bg-surface); border-bottom: 1px solid var(--border); backdrop-filter: blur(8px);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-stretch h-14 overflow-x-auto scrollbar-none">
 
-        <a
-          routerLink="/about"
-          routerLinkActive
-          #linkAbout="routerLinkActive"
-          class="py-4 px-3 text-sm font-semibold border-b-2 transition-colors whitespace-nowrap"
-          [class.text-indigo-400]="linkAbout.isActive"
-          [class.border-indigo-400]="linkAbout.isActive"
-          [class.text-slate-400]="!linkAbout.isActive"
-          [class.border-transparent]="!linkAbout.isActive"
-        >
-          📖 About
-        </a>
+          <!-- Brand -->
+          <div class="flex items-center gap-3 mr-8 shrink-0">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white text-xs font-bold"
+                 style="background: linear-gradient(135deg, #4F46E5, #7C3AED); box-shadow: 0 0 14px rgba(99,102,241,0.35); font-family: 'JetBrains Mono', monospace;">
+              L
+            </div>
+            <div class="flex flex-col leading-none">
+              <span class="text-white font-bold text-sm" style="font-family: 'Syne', sans-serif; letter-spacing: -0.01em;">
+                Logistics <span style="color: #818CF8;">LSP</span>
+              </span>
+              <span class="text-[9px] tracking-widest uppercase" style="color: #3D4F6E; font-family: 'JetBrains Mono', monospace;">
+                SOLID Principles
+              </span>
+            </div>
+          </div>
 
-        <a
-          routerLink="/bad"
-          routerLinkActive
-          #linkBad="routerLinkActive"
-          class="py-4 px-3 text-sm font-semibold border-b-2 transition-colors whitespace-nowrap"
-          [class.text-red-400]="linkBad.isActive"
-          [class.border-red-400]="linkBad.isActive"
-          [class.text-slate-400]="!linkBad.isActive"
-          [class.border-transparent]="!linkBad.isActive"
-        >
-          ❌ Bad
-        </a>
+          <!-- Nav Links -->
+          <div class="flex items-stretch gap-0">
 
-        <a
-          routerLink="/good"
-          routerLinkActive
-          #linkGood="routerLinkActive"
-          class="py-4 px-3 text-sm font-semibold border-b-2 transition-colors whitespace-nowrap"
-          [class.text-green-400]="linkGood.isActive"
-          [class.border-green-400]="linkGood.isActive"
-          [class.text-slate-400]="!linkGood.isActive"
-          [class.border-transparent]="!linkGood.isActive"
-        >
-          ✅ Good
-        </a>
+            <a routerLink="/about" routerLinkActive #la="routerLinkActive"
+               class="flex items-center px-4 text-sm font-medium border-b-2 transition-all duration-200 whitespace-nowrap hover:text-slate-200"
+               [class.text-indigo-400]="la.isActive"
+               [class.border-indigo-500]="la.isActive"
+               [class.text-slate-500]="!la.isActive"
+               [class.border-transparent]="!la.isActive">
+              About
+            </a>
 
-        <a
-          routerLink="/overengineered"
-          routerLinkActive
-          #linkOver="routerLinkActive"
-          class="py-4 px-3 text-sm font-semibold border-b-2 transition-colors whitespace-nowrap"
-          [class.text-amber-400]="linkOver.isActive"
-          [class.border-amber-400]="linkOver.isActive"
-          [class.text-slate-400]="!linkOver.isActive"
-          [class.border-transparent]="!linkOver.isActive"
-        >
-          ⚠️ Overengineered
-        </a>
+            <a routerLink="/bad" routerLinkActive #lb="routerLinkActive"
+               class="flex items-center gap-2 px-4 text-sm font-medium border-b-2 transition-all duration-200 whitespace-nowrap hover:text-slate-200"
+               [class.text-red-400]="lb.isActive"
+               [class.border-red-500]="lb.isActive"
+               [class.text-slate-500]="!lb.isActive"
+               [class.border-transparent]="!lb.isActive">
+              <span class="w-1.5 h-1.5 rounded-full inline-block transition-all"
+                    [style.background]="lb.isActive ? '#EF4444' : '#3D4F6E'"></span>
+              Bad
+            </a>
 
-        <a
-          routerLink="/conclusion"
-          routerLinkActive
-          #linkConclusion="routerLinkActive"
-          class="py-4 px-3 text-sm font-semibold border-b-2 transition-colors whitespace-nowrap"
-          [class.text-teal-400]="linkConclusion.isActive"
-          [class.border-teal-400]="linkConclusion.isActive"
-          [class.text-slate-400]="!linkConclusion.isActive"
-          [class.border-transparent]="!linkConclusion.isActive"
-        >
-          🏁 Conclusion
-        </a>
+            <a routerLink="/good" routerLinkActive #lg="routerLinkActive"
+               class="flex items-center gap-2 px-4 text-sm font-medium border-b-2 transition-all duration-200 whitespace-nowrap hover:text-slate-200"
+               [class.text-emerald-400]="lg.isActive"
+               [class.border-emerald-500]="lg.isActive"
+               [class.text-slate-500]="!lg.isActive"
+               [class.border-transparent]="!lg.isActive">
+              <span class="w-1.5 h-1.5 rounded-full inline-block transition-all"
+                    [style.background]="lg.isActive ? '#10B981' : '#3D4F6E'"></span>
+              Good
+            </a>
 
-        <span class="ml-auto text-xs text-slate-600 hidden xl:block shrink-0">Liskov Substitution Principle</span>
+            <a routerLink="/overengineered" routerLinkActive #lo="routerLinkActive"
+               class="flex items-center gap-2 px-4 text-sm font-medium border-b-2 transition-all duration-200 whitespace-nowrap hover:text-slate-200"
+               [class.text-amber-400]="lo.isActive"
+               [class.border-amber-500]="lo.isActive"
+               [class.text-slate-500]="!lo.isActive"
+               [class.border-transparent]="!lo.isActive">
+              <span class="w-1.5 h-1.5 rounded-full inline-block transition-all"
+                    [style.background]="lo.isActive ? '#F59E0B' : '#3D4F6E'"></span>
+              Overengineered
+            </a>
+
+            <a routerLink="/conclusion" routerLinkActive #lc="routerLinkActive"
+               class="flex items-center gap-2 px-4 text-sm font-medium border-b-2 transition-all duration-200 whitespace-nowrap hover:text-slate-200"
+               [class.text-teal-400]="lc.isActive"
+               [class.border-teal-500]="lc.isActive"
+               [class.text-slate-500]="!lc.isActive"
+               [class.border-transparent]="!lc.isActive">
+              <span class="w-1.5 h-1.5 rounded-full inline-block transition-all"
+                    [style.background]="lc.isActive ? '#14B8A6' : '#3D4F6E'"></span>
+              Conclusion
+            </a>
+
+          </div>
+
+          <!-- Right Label -->
+          <div class="ml-auto pl-6 flex items-center shrink-0">
+            <span class="hidden lg:block text-[9px] tracking-widest uppercase" style="color: #2D3F55; font-family: 'JetBrains Mono', monospace;">
+              Liskov Substitution
+            </span>
+          </div>
+
+        </div>
       </div>
     </nav>
   `,

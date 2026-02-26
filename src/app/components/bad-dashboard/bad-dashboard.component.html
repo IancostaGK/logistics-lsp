@@ -1,4 +1,4 @@
-<div class="max-w-7xl mx-auto px-4 py-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
   <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 items-start">
 
     <!-- Left column: main content -->
@@ -6,78 +6,90 @@
 
       <!-- Header -->
       <div class="mb-8">
-        <div class="flex items-center gap-3 mb-2">
-          <h1 class="text-3xl font-bold text-gray-900">Scenario 1</h1>
-          <span class="bg-red-100 text-red-700 text-sm font-semibold px-3 py-1 rounded-full border border-red-200">
-            ❌ LSP Violation
-          </span>
+        <div class="flex items-start gap-4 mb-5">
+          <div class="font-black text-[5rem] leading-none select-none shrink-0" style="color: #1A2840; font-family: 'Syne', sans-serif;">01</div>
+          <div class="pt-2">
+            <div class="flex items-center gap-3 mb-2 flex-wrap">
+              <h1 class="text-3xl font-black" style="color: #F1F5F9;">Scenario 1</h1>
+              <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full"
+                    style="background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.3); color: #FCA5A5; font-family: 'JetBrains Mono', monospace;">
+                ✕ LSP VIOLATION
+              </span>
+            </div>
+            <p class="text-base font-medium" style="color: #64748B;">Bad: Abstract Class with Incompatible Override</p>
+          </div>
         </div>
-        <p class="text-lg text-gray-500 mb-4">Bad: Abstract Class with Incompatible Override</p>
-        <div class="bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-800 leading-relaxed">
-          <strong>Problem:</strong>
-          <code class="bg-red-100 px-1 rounded">ElectricScooter</code> extends
-          <code class="bg-red-100 px-1 rounded">VehicleBase</code> but
-          <strong>throws an error</strong> inside
-          <code class="bg-red-100 px-1 rounded">startEngine()</code> — violating LSP.
-          Any code that iterates vehicles and calls <code class="bg-red-100 px-1 rounded">startEngine()</code>
-          will crash at runtime. Press <strong>Dispatch All</strong> to see it happen.
+
+        <div class="rounded-xl p-5 text-sm leading-relaxed"
+             style="background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); color: rgba(252,165,165,0.8);">
+          <strong style="color: #F87171;">Problem:</strong>
+          <code class="px-1.5 py-0.5 rounded text-xs ml-1" style="background: rgba(239,68,68,0.2); color: #FCA5A5;">ElectricScooter</code>
+          extends
+          <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(239,68,68,0.2); color: #FCA5A5;">VehicleBase</code>
+          but <strong style="color: #FCA5A5;">throws an error</strong> inside
+          <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(239,68,68,0.2); color: #FCA5A5;">startEngine()</code>
+          — violating LSP. Any code that iterates vehicles and calls
+          <code class="px-1.5 py-0.5 rounded text-xs" style="background: rgba(239,68,68,0.2); color: #FCA5A5;">startEngine()</code>
+          will crash at runtime. Press <strong style="color: #FCA5A5;">Dispatch All</strong> to see it happen.
         </div>
       </div>
 
       <!-- Action Buttons -->
-      <div class="flex gap-3 mb-6">
+      <div class="flex gap-3 mb-8 flex-wrap">
         <button
           (click)="dispatchAll()"
-          class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-5 rounded-lg transition-colors text-sm">
-          💥 Dispatch All (triggers crash)
+          class="flex items-center gap-2 font-semibold py-2.5 px-5 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
+          style="background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.35); color: #FCA5A5;">
+          💥 Dispatch All
+          <span class="text-xs" style="color: rgba(252,165,165,0.5);">(triggers crash)</span>
         </button>
         <button
           (click)="reset()"
-          class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold py-2 px-5 rounded-lg transition-colors text-sm">
+          class="flex items-center gap-2 font-semibold py-2.5 px-5 rounded-xl text-sm transition-all duration-200 hover:opacity-90"
+          style="background: var(--bg-raised); border: 1px solid var(--border); color: #94A3B8;">
           ↺ Reset
         </button>
       </div>
 
       <!-- Cards Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
         @for (card of cards; track card.vehicle.id) {
           <div
-            class="bg-white rounded-xl shadow-md border-2 overflow-hidden transition-colors"
-            [class.border-green-300]="card.result"
-            [class.border-red-400]="card.error"
-            [class.border-gray-100]="!card.result && !card.error"
+            class="rounded-2xl overflow-hidden transition-all duration-300"
+            [style.background]="'var(--bg-surface)'"
+            [style.border]="card.error ? '1px solid rgba(239,68,68,0.5)' : card.result ? '1px solid rgba(16,185,129,0.4)' : '1px solid var(--border)'"
           >
             <!-- Card Header -->
-            <div class="p-6 border-b border-gray-50">
-              <div class="text-5xl mb-3 select-none">{{ card.vehicle.icon }}</div>
-              <h3 class="text-lg font-bold text-gray-900">{{ card.vehicle.name }}</h3>
-              <span class="text-xs text-slate-400 font-mono">{{ card.vehicle.constructor.name }}</span>
+            <div class="p-5 pb-4" style="border-bottom: 1px solid var(--border);">
+              <div class="text-4xl mb-3 select-none">{{ card.vehicle.icon }}</div>
+              <h3 class="font-bold text-base mb-0.5" style="color: #E2E8F0;">{{ card.vehicle.name }}</h3>
+              <span class="text-xs block" style="color: #3D4F6E; font-family: 'JetBrains Mono', monospace;">{{ card.vehicle.constructor.name }}</span>
             </div>
 
             <!-- Card Body -->
-            <div class="p-6">
-              <!-- Result / Error Area -->
+            <div class="p-5">
+              <!-- Status Area -->
               <div
-                class="min-h-14 mb-4 text-sm rounded-lg p-3 transition-colors"
-                [class.bg-gray-50]="!card.result && !card.error"
-                [class.bg-green-50]="!!card.result"
-                [class.bg-red-50]="!!card.error"
+                class="min-h-14 mb-4 text-sm rounded-xl p-3.5 transition-all duration-300"
+                [style.background]="card.error ? 'rgba(239,68,68,0.07)' : card.result ? 'rgba(16,185,129,0.07)' : 'var(--bg-raised)'"
+                [style.border]="card.error ? '1px solid rgba(239,68,68,0.2)' : card.result ? '1px solid rgba(16,185,129,0.2)' : '1px solid var(--border)'"
               >
                 @if (card.result) {
-                  <p class="text-green-700 font-medium">✅ {{ card.result }}</p>
+                  <p class="font-medium" style="color: #34D399;">✅ {{ card.result }}</p>
                 } @else if (card.error) {
-                  <p class="text-red-700 font-medium">
+                  <p class="font-medium" style="color: #F87171;">
                     💥 <span class="font-bold">Error:</span> {{ card.error }}
                   </p>
                 } @else {
-                  <p class="text-gray-400 italic text-xs">Press Dispatch to call startEngine()</p>
+                  <p class="italic text-xs" style="color: #3D4F6E;">Press Dispatch to call startEngine()</p>
                 }
               </div>
 
               <!-- Dispatch Button -->
               <button
                 (click)="dispatch(card)"
-                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
+                class="w-full font-semibold py-2.5 px-4 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
+                style="background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.25); color: #FCA5A5;">
                 🚀 Dispatch
               </button>
             </div>
@@ -85,25 +97,33 @@
         }
       </div>
 
-      <!-- Code Snippet -->
-      <div class="bg-gray-900 rounded-xl p-6 overflow-x-auto">
-        <p class="text-amber-400 font-semibold text-base mb-4 font-sans">📄 The Violation</p>
-        <pre class="text-sm font-mono leading-relaxed text-gray-300"><span class="text-blue-400">abstract class</span> <span class="text-green-400">VehicleBase</span> &#123;
-  <span class="text-blue-400">abstract</span> <span class="text-yellow-300">startEngine</span>(): <span class="text-cyan-400">string</span>;
+      <!-- Code Block -->
+      <div class="rounded-2xl overflow-hidden" style="background: #060B14; border: 1px solid var(--border);">
+        <!-- Terminal Chrome -->
+        <div class="flex items-center gap-2 px-4 py-3" style="border-bottom: 1px solid var(--border);">
+          <span class="w-3 h-3 rounded-full inline-block" style="background: rgba(239,68,68,0.7);"></span>
+          <span class="w-3 h-3 rounded-full inline-block" style="background: rgba(245,158,11,0.7);"></span>
+          <span class="w-3 h-3 rounded-full inline-block" style="background: rgba(16,185,129,0.7);"></span>
+          <span class="ml-3 text-xs" style="color: #3D4F6E; font-family: 'JetBrains Mono', monospace;">vehicle-base.ts — The Violation</span>
+        </div>
+        <div class="p-6 overflow-x-auto">
+          <pre class="text-sm leading-relaxed" style="font-family: 'JetBrains Mono', monospace; color: #94A3B8;"><span style="color: #60A5FA;">abstract class</span> <span style="color: #34D399;">VehicleBase</span> &#123;
+  <span style="color: #60A5FA;">abstract</span> <span style="color: #FDE68A;">startEngine</span>(): <span style="color: #67E8F9;">string</span>;
 &#125;
 
-<span class="text-gray-500">// ✅ Works fine — honours the contract</span>
-<span class="text-blue-400">class</span> <span class="text-green-400">Truck</span> <span class="text-blue-400">extends</span> VehicleBase &#123;
-  <span class="text-yellow-300">startEngine</span>() &#123; <span class="text-blue-400">return</span> <span class="text-orange-300">"V8 roaring!"</span>; &#125;
+<span style="color: #475569;">// ✅ Works fine — honours the contract</span>
+<span style="color: #60A5FA;">class</span> <span style="color: #34D399;">Truck</span> <span style="color: #60A5FA;">extends</span> VehicleBase &#123;
+  <span style="color: #FDE68A;">startEngine</span>() &#123; <span style="color: #60A5FA;">return</span> <span style="color: #FDBA74;">"V8 roaring!"</span>; &#125;
 &#125;
 
-<span class="text-gray-500">// ❌ LSP VIOLATION — throws instead of returning string</span>
-<span class="text-blue-400">class</span> <span class="text-red-400">ElectricScooter</span> <span class="text-blue-400">extends</span> VehicleBase &#123;
-  <span class="text-yellow-300">startEngine</span>() &#123; <span class="text-blue-400">throw new</span> <span class="text-red-400">Error</span>(<span class="text-orange-300">"No engine!"</span>); &#125;
+<span style="color: #475569;">// ❌ LSP VIOLATION — throws instead of returning string</span>
+<span style="color: #60A5FA;">class</span> <span style="color: #F87171;">ElectricScooter</span> <span style="color: #60A5FA;">extends</span> VehicleBase &#123;
+  <span style="color: #FDE68A;">startEngine</span>() &#123; <span style="color: #60A5FA;">throw new</span> <span style="color: #F87171;">Error</span>(<span style="color: #FDBA74;">"No engine!"</span>); &#125;
 &#125;
 
-<span class="text-gray-500">// Iterating all vehicles: will crash on ElectricScooter</span>
-vehicles.<span class="text-yellow-300">forEach</span>(v <span class="text-blue-400">=></span> v.<span class="text-yellow-300">startEngine</span>()); <span class="text-red-400">// 💥 BOOM</span></pre>
+<span style="color: #475569;">// Iterating all vehicles: will crash on ElectricScooter</span>
+vehicles.<span style="color: #FDE68A;">forEach</span>(v <span style="color: #60A5FA;">=&gt;</span> v.<span style="color: #FDE68A;">startEngine</span>()); <span style="color: #F87171;">// 💥 BOOM</span></pre>
+        </div>
       </div>
 
     </div>
